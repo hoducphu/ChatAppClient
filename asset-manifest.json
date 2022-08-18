@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "./static/css/main.b0501f76.css",
-    "main.js": "./static/js/main.87284689.js",
-    "static/media/Group 9.jpg": "./static/media/Group 9.ad8b186629d75f5ae144.jpg",
-    "static/media/Group 8.jpg": "./static/media/Group 8.6404089553fcd9282f43.jpg",
-    "static/media/Ban Do-01 1.jpg": "./static/media/Ban Do-01 1.01319a53187b1cc3f559.jpg",
-    "static/media/Group 7.jpg": "./static/media/Group 7.f7674305d8014b419362.jpg",
-    "static/media/Banner.jpg": "./static/media/Banner.7143cc7a69c2e362d66a.jpg",
-    "static/media/Banner-1.jpg": "./static/media/Banner-1.0eae62bdbd921796ba1c.jpg",
-    "static/media/Logo_Icon-22 1.svg": "./static/media/Logo_Icon-22 1.ca93c8dd997f18c8e3e97dfaf118913c.svg",
-    "static/media/lexend-all-400-normal.woff": "./static/media/lexend-all-400-normal.ded5a4c4d1d79a870503.woff",
-    "static/media/duck2.svg": "./static/media/duck2.a13ea7d06af8a8e598b4885bd84a3e3a.svg",
-    "static/media/lexend-latin-400-normal.woff2": "./static/media/lexend-latin-400-normal.736c5cefcbd02f92657f.woff2",
-    "static/media/lexend-latin-ext-400-normal.woff2": "./static/media/lexend-latin-ext-400-normal.8898bb17b8e39c279036.woff2",
-    "static/media/lexend-vietnamese-400-normal.woff2": "./static/media/lexend-vietnamese-400-normal.269a8b95670425691687.woff2",
-    "index.html": "./index.html",
-    "main.b0501f76.css.map": "./static/css/main.b0501f76.css.map",
-    "main.87284689.js.map": "./static/js/main.87284689.js.map"
+    "main.css": "/static/css/main.f6c863d6.css",
+    "main.js": "/static/js/main.43ab19d7.js",
+    "static/media/Group 9.jpg": "/static/media/Group 9.ad8b186629d75f5ae144.jpg",
+    "static/media/Group 8.jpg": "/static/media/Group 8.6404089553fcd9282f43.jpg",
+    "static/media/Ban Do-01 1.jpg": "/static/media/Ban Do-01 1.01319a53187b1cc3f559.jpg",
+    "static/media/Group 7.jpg": "/static/media/Group 7.f7674305d8014b419362.jpg",
+    "static/media/Banner.jpg": "/static/media/Banner.7143cc7a69c2e362d66a.jpg",
+    "static/media/Banner-1.jpg": "/static/media/Banner-1.0eae62bdbd921796ba1c.jpg",
+    "static/media/Logo_Icon-22 1.svg": "/static/media/Logo_Icon-22 1.ca93c8dd997f18c8e3e97dfaf118913c.svg",
+    "static/media/lexend-all-400-normal.woff": "/static/media/lexend-all-400-normal.ded5a4c4d1d79a870503.woff",
+    "static/media/duck2.svg": "/static/media/duck2.a13ea7d06af8a8e598b4885bd84a3e3a.svg",
+    "static/media/lexend-latin-400-normal.woff2": "/static/media/lexend-latin-400-normal.736c5cefcbd02f92657f.woff2",
+    "static/media/lexend-latin-ext-400-normal.woff2": "/static/media/lexend-latin-ext-400-normal.8898bb17b8e39c279036.woff2",
+    "static/media/lexend-vietnamese-400-normal.woff2": "/static/media/lexend-vietnamese-400-normal.269a8b95670425691687.woff2",
+    "index.html": "/index.html",
+    "main.f6c863d6.css.map": "/static/css/main.f6c863d6.css.map",
+    "main.43ab19d7.js.map": "/static/js/main.43ab19d7.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0501f76.css",
-    "static/js/main.87284689.js"
+    "static/css/main.f6c863d6.css",
+    "static/js/main.43ab19d7.js"
   ]
 }
