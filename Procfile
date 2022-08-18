@@ -1,1 +1,1 @@
-web:node src/index.js
+web:node deploy/index.js
