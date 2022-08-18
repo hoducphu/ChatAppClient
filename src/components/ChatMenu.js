@@ -112,7 +112,7 @@ const ChatMenu = () => {
   const navigate = useNavigate();
   const uploadAvatar = useRef(null);
 
-  const server = "http://localhost:5000/";
+  const server = "https://loaphuongchatapp.herokuapp.com/";
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);

@@ -75,7 +75,7 @@ const Message = ({ fetchAgain, setFetchAgain }) => {
   const [openDeleteSnackBar, setOpenDeleteSnackBar] = useState(false);
   const [addedUser, setAddedUser] = useState([]);
   const [deletedUser, setDeletedUser] = useState([]);
-  const server = "http://localhost:5000/";
+  const server = "https://loaphuongchatapp.herokuapp.com/";
 
   const messageEl = useRef(null);
   const uploadFileMessage = useRef(null);
@@ -269,8 +269,8 @@ const Message = ({ fetchAgain, setFetchAgain }) => {
         user.token
       );
       socket.emit("Received Message", data);
+      await setFetchAgain(!fetchAgain);
       setMessages([...messages, data]);
-      setFetchAgain(!fetchAgain);
       setRoomSelectedIndex(0);
       setNewMessage("");
     }
@@ -300,8 +300,8 @@ const Message = ({ fetchAgain, setFetchAgain }) => {
         user.token
       ).then((result) => {
         socket.emit("Received Message", result.data);
-        setMessages([...messages, result.data]);
         setFetchAgain(!fetchAgain);
+        setMessages([...messages, result.data]);
         setRoomSelectedIndex(0);
       });
     }
@@ -315,7 +315,7 @@ const Message = ({ fetchAgain, setFetchAgain }) => {
   };
 
   useEffect(() => {
-    socket = io("http://localhost:5000/");
+    socket = io("https://loaphuongchatapp.herokuapp.com/");
     // eslint-disable-next-line
   }, []);
 
@@ -326,6 +326,7 @@ const Message = ({ fetchAgain, setFetchAgain }) => {
 
   useEffect(() => {
     socket.on("New Message", (newMessageReceived) => {
+      setFetchAgain(!fetchAgain);
       setMessages([...messages, newMessageReceived]);
     });
   });
