@@ -1,7 +1,5 @@
 import axios from "axios";
-const endpoint =
-  process.env.REACT_APP_API_ENDPOINT ||
-  "https://loaphuongchatapp.herokuapp.com/";
+const endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 export async function getWithToken(url, token) {
   return await axios.get(endpoint + url, {
