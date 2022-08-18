@@ -75,7 +75,7 @@ const Message = ({ fetchAgain, setFetchAgain }) => {
   const [openDeleteSnackBar, setOpenDeleteSnackBar] = useState(false);
   const [addedUser, setAddedUser] = useState([]);
   const [deletedUser, setDeletedUser] = useState([]);
-  const server = "https://loaphuongchatapp.herokuapp.com/";
+  const server = process.env.REACT_APP_API_ENDPOINT;
 
   const messageEl = useRef(null);
   const uploadFileMessage = useRef(null);
@@ -315,7 +315,7 @@ const Message = ({ fetchAgain, setFetchAgain }) => {
   };
 
   useEffect(() => {
-    socket = io("https://loaphuongchatapp.herokuapp.com/");
+    socket = io(process.env.REACT_APP_API_ENDPOINT);
     // eslint-disable-next-line
   }, []);
 

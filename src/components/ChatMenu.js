@@ -112,7 +112,7 @@ const ChatMenu = () => {
   const navigate = useNavigate();
   const uploadAvatar = useRef(null);
 
-  const server = "https://loaphuongchatapp.herokuapp.com/";
+  const server = process.env.REACT_APP_API_ENDPOINT;
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
