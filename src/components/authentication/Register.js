@@ -184,9 +184,8 @@ const Register = () => {
                 focused
                 required
               />
-              <TextField
-                type="email"
-                label="Email"
+              <TextField                
+                label="Username"
                 color="spring"
                 sx={{
                   m: 1.5,
