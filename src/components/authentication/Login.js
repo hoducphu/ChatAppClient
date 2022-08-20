@@ -120,7 +120,7 @@ const Login = () => {
           </Typography>
 
           <TextField
-            label="Email"
+            label="Username"
             color="spring"
             sx={{
               width: "400px",
