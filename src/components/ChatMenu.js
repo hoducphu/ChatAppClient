@@ -401,8 +401,7 @@ const ChatMenu = () => {
                   autoComplete="off"
                   onChange={handleEditChange("fullname")}
                 />
-                <Typography
-                  value={editForm.phonenumber}
+                <Typography                  
                   sx={{
                     mr: "auto",
                     mt: 2,
@@ -414,8 +413,8 @@ const ChatMenu = () => {
                 >
                   Số điện thoại:
                 </Typography>
-                <TextField
-                  value={editForm.password}
+                <TextField            
+                  value={editForm.phonenumber}
                   label={user && user.phonenumber}
                   autoComplete="off"
                   onChange={handleEditChange("phonenumber")}
@@ -432,6 +431,7 @@ const ChatMenu = () => {
                   Mật khẩu:
                 </Typography>
                 <TextField
+                  value={editForm.password}
                   type="password"
                   autoComplete="off"
                   onChange={handleEditChange("password")}
