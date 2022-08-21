@@ -462,7 +462,7 @@ const ChatMenu = () => {
                     fontSize: "14px",
                     borderRadius: "10px",
                     textTransform: "none",
-                    border: "1px solid #fff",
+                    border: "2px solid #fff",
                     "&:hover": {
                       border: "2px solid #fff",
                       backgroundColor: "#cf420d",
