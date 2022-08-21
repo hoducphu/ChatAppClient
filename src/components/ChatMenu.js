@@ -161,10 +161,8 @@ const ChatMenu = () => {
     editForm.phonenumber === "" && delete editForm.phonenumber;
     editForm.password === "" && delete editForm.password;
     editForm.password !== "" &&
-      editForm.password !== passwordConfirm &&
-      handleOpenSnackBar();
-
-    putWithToken(`api/user/${user._id}`, editForm, user.token)
+      editForm.password !== passwordConfirm ?
+      handleOpenSnackBar() : putWithToken(`api/user/${user._id}`, editForm, user.token)
       .then((res) => {
         localStorage.setItem("userInfo", JSON.stringify(res.data));
         setEditForm({
