@@ -495,7 +495,7 @@ const Message = ({ fetchAgain, setFetchAgain }) => {
                     ml: marginMessage(messages, msg, index, user._id),
                   }}
                 >
-                  {msg.sender._id !== user._id &&<div style={{ fontSize: "13px", color: "#7c7f83" }}>
+                  {msg.sender._id !== user._id &&<div style={{ fontSize: "12px", color: "#7c7f83" }}>
                     {msg.sender.fullname}
                   </div>}
                   {msg.message}
