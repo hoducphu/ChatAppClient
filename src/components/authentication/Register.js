@@ -290,13 +290,15 @@ const Register = () => {
             >
               Đăng ký không thành công
             </Typography>
-            <Typography
-              id="modal-modal-description"
-              sx={{ mt: 4, fontFamily: "Lexend", fontWeight: 400 }}
-              align="center"
-            >
-              {errorMessage && errorMessage}
-            </Typography>
+            {errorMessage?.map((err) => (
+              <Typography
+                id="modal-modal-description"
+                sx={{ mt: 4, fontFamily: "Lexend", fontWeight: 400 }}
+                align="center"
+              >
+                {err}
+              </Typography>
+            ))}
           </Box>
         </Modal>
       ) : (
