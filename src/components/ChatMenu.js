@@ -161,10 +161,8 @@ const ChatMenu = () => {
     editForm.phonenumber === "" && delete editForm.phonenumber;
     editForm.password === "" && delete editForm.password;
     editForm.password !== "" &&
-      editForm.password !== passwordConfirm &&
-      handleOpenSnackBar();
-
-    putWithToken(`api/user/${user._id}`, editForm, user.token)
+      editForm.password !== passwordConfirm ?
+      handleOpenSnackBar() : putWithToken(`api/user/${user._id}`, editForm, user.token)
       .then((res) => {
         localStorage.setItem("userInfo", JSON.stringify(res.data));
         setEditForm({
@@ -401,8 +399,7 @@ const ChatMenu = () => {
                   autoComplete="off"
                   onChange={handleEditChange("fullname")}
                 />
-                <Typography
-                  value={editForm.phonenumber}
+                <Typography                  
                   sx={{
                     mr: "auto",
                     mt: 2,
@@ -414,8 +411,8 @@ const ChatMenu = () => {
                 >
                   Số điện thoại:
                 </Typography>
-                <TextField
-                  value={editForm.password}
+                <TextField            
+                  value={editForm.phonenumber}
                   label={user && user.phonenumber}
                   autoComplete="off"
                   onChange={handleEditChange("phonenumber")}
@@ -432,6 +429,7 @@ const ChatMenu = () => {
                   Mật khẩu:
                 </Typography>
                 <TextField
+                  value={editForm.password}
                   type="password"
                   autoComplete="off"
                   onChange={handleEditChange("password")}
@@ -464,7 +462,7 @@ const ChatMenu = () => {
                     fontSize: "14px",
                     borderRadius: "10px",
                     textTransform: "none",
-                    border: "1px solid #fff",
+                    border: "2px solid #fff",
                     "&:hover": {
                       border: "2px solid #fff",
                       backgroundColor: "#cf420d",
