@@ -70,7 +70,7 @@ const Register = () => {
         }, 1000);
       })
       .catch(async (err) => {
-        setErrorMessage(err.response.data.message);
+        setErrorMessage(err.response.data.message.err);
         setOpen(true);
       });
   };
@@ -290,13 +290,15 @@ const Register = () => {
             >
               Đăng ký không thành công
             </Typography>
-            <Typography
-              id="modal-modal-description"
-              sx={{ mt: 4, fontFamily: "Lexend", fontWeight: 400 }}
-              align="center"
-            >
-              {errorMessage && errorMessage}
-            </Typography>
+            {errorMessage?.map((err) => (
+              <Typography
+                id="modal-modal-description"
+                sx={{ mt: 4, fontFamily: "Lexend", fontWeight: 400 }}
+                align="center"
+              >
+                {err}
+              </Typography>
+            ))}
           </Box>
         </Modal>
       ) : (
