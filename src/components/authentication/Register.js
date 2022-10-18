@@ -69,8 +69,8 @@ const Register = () => {
           navigate("/chat");
         }, 1000);
       })
-      .catch(async (err) => {
-        setErrorMessage(err.response.data.message);
+      .catch((err) => {
+        setErrorMessage(err.response.data.err);
         setOpen(true);
       });
   };
@@ -274,7 +274,7 @@ const Register = () => {
               left: "50%",
               transform: "translate(-50%, -50%)",
               width: 450,
-              height: 150,
+              height: errorMessage.length > 1 ? 250 : 150,
               bgcolor: "#fff",
               boxShadow: "2px 2px 12px 5px rgba(0, 0, 0, 0.1)",
               borderRadius: "23px",
@@ -290,13 +290,16 @@ const Register = () => {
             >
               Đăng ký không thành công
             </Typography>
-            <Typography
-              id="modal-modal-description"
-              sx={{ mt: 4, fontFamily: "Lexend", fontWeight: 400 }}
-              align="center"
-            >
-              {errorMessage && errorMessage}
-            </Typography>
+            {errorMessage &&
+              errorMessage?.map((err) => (
+                <Typography
+                  id="modal-modal-description"
+                  sx={{ mt: 4, fontFamily: "Lexend", fontWeight: 400 }}
+                  align="center"
+                >
+                  {err}
+                </Typography>
+              ))}
           </Box>
         </Modal>
       ) : (
