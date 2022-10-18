@@ -274,7 +274,7 @@ const Register = () => {
               left: "50%",
               transform: "translate(-50%, -50%)",
               width: 450,
-              height: errorMessage.length > 1 ? 250 : 150,
+              height: errorMessage && errorMessage.length > 1 ? 250 : 150,
               bgcolor: "#fff",
               boxShadow: "2px 2px 12px 5px rgba(0, 0, 0, 0.1)",
               borderRadius: "23px",
