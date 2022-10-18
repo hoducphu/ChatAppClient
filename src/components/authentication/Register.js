@@ -185,7 +185,7 @@ const Register = () => {
                 required
               />
               <TextField                
-                label="Username"
+                label="Email"
                 color="spring"
                 sx={{
                   m: 1.5,
