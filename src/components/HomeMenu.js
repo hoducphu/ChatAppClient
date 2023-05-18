@@ -22,7 +22,7 @@ function HomeMenu() {
     <Box
       sx={{
         width: "100%",
-        height: "80px",
+        height: "8%",
         backgroundColor: "#cf420d",
         position: "sticky",
         top: 0,

@@ -74,7 +74,7 @@ const Login = () => {
       <Box
         sx={{
           width: "100%",
-          height: "100%",
+          height: "92%",
           justifyContent: "center",
           alignItems: "center",
           bgcolor: "#cf420d",
@@ -85,6 +85,10 @@ const Login = () => {
         <FormControl
           component="form"
           sx={{
+            position: "absolute",
+            top: "45%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             width: 610,
             height: 534,
             bgcolor: "#fff",

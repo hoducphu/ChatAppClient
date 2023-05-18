@@ -108,6 +108,8 @@ const ChatMenu = () => {
   const [newRoomName, setNewRoomName] = useState();
   const [openSnackBar, setOpenSnackBar] = useState(false);
   const [openUpdateSuccess, setOpenUpdateSuccess] = useState(false);
+  const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [updateFailMessage, setUpdateFailMessage] = useState();
   const { user, setUser, setSelectedRoom } = ChatState();
   const navigate = useNavigate();
   const uploadAvatar = useRef(null);
@@ -160,22 +162,24 @@ const ChatMenu = () => {
     editForm.fullname === "" && delete editForm.fullname;
     editForm.phonenumber === "" && delete editForm.phonenumber;
     editForm.password === "" && delete editForm.password;
-    editForm.password !== "" &&
-      editForm.password !== passwordConfirm ?
-      handleOpenSnackBar() : putWithToken(`api/user/${user._id}`, editForm, user.token)
-      .then((res) => {
-        localStorage.setItem("userInfo", JSON.stringify(res.data));
-        setEditForm({
-          fullname: "",
-          phonenumber: "",
-          password: "",
-        });
-        handleOpenUpdateSuccess();
-        setUser(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    editForm.password !== "" && editForm.password !== passwordConfirm
+      ? handleOpenSnackBar()
+      : putWithToken(`api/user/updateUser`, editForm, user.token)
+          .then((res) => {
+            localStorage.setItem("userInfo", JSON.stringify(res.data));
+            setEditForm({
+              fullname: "",
+              phonenumber: "",
+              password: "",
+            });
+            setUpdateSuccess(true);
+            handleOpenUpdateSuccess();
+            setUser(res.data);
+          })
+          .catch((err) => {
+            handleOpenUpdateSuccess();
+            setUpdateFailMessage(err.response.data.message);
+          });
   };
 
   const handleChangePasswordConfirm = (e) => {
@@ -241,7 +245,7 @@ const ChatMenu = () => {
     let formdata = new FormData();
     if (avatar !== null) {
       formdata.append("uploadAvatar", avatar);
-      putAvatar(`api/user/uploadAvatar/${user._id}`, formdata)
+      putAvatar(`api/user/uploadAvatar`, formdata)
         .then((res) => {
           localStorage.setItem("userInfo", JSON.stringify(res.data));
           setUser(res.data);
@@ -258,7 +262,7 @@ const ChatMenu = () => {
       <Grid
         container
         sx={{
-          height: "100vh",
+          height: "100%",
         }}
       >
         <Grid
@@ -312,10 +316,17 @@ const ChatMenu = () => {
               />
             </Tabs>
           </Box>
-          <Box sx={{ mt: 35 }}>
-            <Tooltip title="Open settings">
+          <Box>
+            <Tooltip title="Open menu">
               <IconButton
-                sx={{ p: 0, ml: "auto", bgcolor: "black" }}
+                sx={{
+                  p: 0,
+                  position: "absolute",
+                  left: "auto",
+                  bottom: "3%",
+                  transform: "translate(-50%, -50%)",
+                  bgcolor: "black",
+                }}
                 onClick={handleOpenUserMenu}
               >
                 <Avatar
@@ -399,7 +410,7 @@ const ChatMenu = () => {
                   autoComplete="off"
                   onChange={handleEditChange("fullname")}
                 />
-                <Typography                  
+                <Typography
                   sx={{
                     mr: "auto",
                     mt: 2,
@@ -411,7 +422,7 @@ const ChatMenu = () => {
                 >
                   Số điện thoại:
                 </Typography>
-                <TextField            
+                <TextField
                   value={editForm.phonenumber}
                   label={user && user.phonenumber}
                   autoComplete="off"
@@ -513,7 +524,7 @@ const ChatMenu = () => {
             >
               {searchResult &&
                 searchResult.map((searchUser) => (
-                  <>
+                  <div key={searchUser._id}>
                     <ListItemButton
                       onClick={(event) => selectUser(event, searchUser)}
                     >
@@ -532,7 +543,7 @@ const ChatMenu = () => {
                       />
                     </ListItemButton>
                     <Divider />
-                  </>
+                  </div>
                 ))}
             </List>
           </TabPanel>
@@ -786,44 +797,86 @@ const ChatMenu = () => {
           </Box>
         </Box>
       </Modal>
-      <Modal
-        open={openUpdateSuccess}
-        onClose={handleCloseUpdateSuccess}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 450,
-            height: 100,
-            bgcolor: "#fff",
-            boxShadow: "2px 2px 12px 5px rgba(0, 0, 0, 0.1)",
-            borderRadius: "23px",
-            p: 4,
-          }}
+      {updateSuccess ? (
+        <Modal
+          open={openUpdateSuccess}
+          onClose={handleCloseUpdateSuccess}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
         >
-          <Typography
-            id="modal-modal-title"
-            variant="h4"
-            component="h2"
-            sx={{ color: "#CF420D", fontFamily: "Lexend", fontWeight: 700 }}
-            align="center"
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 450,
+              height: 100,
+              bgcolor: "#fff",
+              boxShadow: "2px 2px 12px 5px rgba(0, 0, 0, 0.1)",
+              borderRadius: "23px",
+              p: 4,
+            }}
           >
-            Cập nhật thành công
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 4, fontFamily: "Lexend", fontWeight: 400 }}
-            align="center"
+            <Typography
+              id="modal-modal-title"
+              variant="h4"
+              component="h2"
+              sx={{ color: "#CF420D", fontFamily: "Lexend", fontWeight: 700 }}
+              align="center"
+            >
+              Cập nhật thành công
+            </Typography>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 4, fontFamily: "Lexend", fontWeight: 400 }}
+              align="center"
+            >
+              Quạc quạc, quạc quạc...
+            </Typography>
+          </Box>
+        </Modal>
+      ) : (
+        <Modal
+          open={openUpdateSuccess}
+          onClose={handleCloseUpdateSuccess}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 450,
+              height: 100,
+              bgcolor: "#fff",
+              boxShadow: "2px 2px 12px 5px rgba(0, 0, 0, 0.1)",
+              borderRadius: "23px",
+              p: 4,
+            }}
           >
-            Quạc quạc, quạc quạc...
-          </Typography>
-        </Box>
-      </Modal>
+            <Typography
+              id="modal-modal-title"
+              variant="h4"
+              component="h2"
+              sx={{ color: "#CF420D", fontFamily: "Lexend", fontWeight: 700 }}
+              align="center"
+            >
+              Cập nhật thất bại
+            </Typography>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 4, fontFamily: "Lexend", fontWeight: 400 }}
+              align="center"
+            >
+              {updateFailMessage}
+            </Typography>
+          </Box>
+        </Modal>
+      )}
+
       <Snackbar
         open={openSnackBar}
         autoHideDuration={3000}

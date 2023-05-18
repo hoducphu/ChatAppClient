@@ -88,13 +88,12 @@ const RoomList = ({ fetchAgain }) => {
       >
         {chats &&
           chats.map((chat, index) => (
-            <>
+            <div key={chat._id}>
               <ListItemButton
                 selected={roomSelectedIndex === index}
                 onClick={(event) => {
                   handleListItemClick(event, index, chat);
                 }}
-                key={chat._id}
               >
                 <ListItemText
                   primary={chat.roomName}
@@ -112,7 +111,7 @@ const RoomList = ({ fetchAgain }) => {
                 />
               </ListItemButton>
               <Divider />
-            </>
+            </div>
           ))}
       </List>
     </>

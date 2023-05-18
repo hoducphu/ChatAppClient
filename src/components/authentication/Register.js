@@ -70,7 +70,7 @@ const Register = () => {
         }, 1000);
       })
       .catch((err) => {
-        setErrorMessage(err.response.data.err);
+        setErrorMessage(err.response.data.message);
         setOpen(true);
       });
   };
@@ -78,16 +78,23 @@ const Register = () => {
   return (
     <ThemeProvider theme={theme}>
       <HomeMenu />
-      <Grid container sx={{ background: "#FFEEEB" }}>
-        <Grid item xs={6}>
+      <Grid container sx={{ background: "#FFEEEB", height: "92%" }}>
+        <Grid
+          item
+          xs={6}
+          sx={{
+            backgroundColor: "#cf420d",
+            width: "100%",
+            height: "100%",
+          }}
+        >
           <img
             src={Duck}
             alt=""
             style={{
               backgroundColor: "#cf420d",
-              width: "600px",
-              height: "583px",
-              display: "block",
+              width: "100%",
+              height: "99.5%",
             }}
           />
         </Grid>
@@ -95,8 +102,9 @@ const Register = () => {
           item
           xs={4.1}
           sx={{
-            margin: "20px 50px",
+            margin: "auto",
             width: "450px",
+            height: "70%",
             boxShadow: "2px 2px 12px 5px rgba(0, 0, 0, 0.1) !important",
             borderRadius: "23px",
           }}
@@ -290,15 +298,13 @@ const Register = () => {
             >
               Đăng ký không thành công
             </Typography>
-            {errorMessage?.map((err) => (
               <Typography
                 id="modal-modal-description"
                 sx={{ mt: 4, fontFamily: "Lexend", fontWeight: 400 }}
                 align="center"
               >
-                {err}
+                {errorMessage}
               </Typography>
-            ))}
           </Box>
         </Modal>
       ) : (
