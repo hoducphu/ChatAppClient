@@ -192,7 +192,7 @@ const ChatMenu = () => {
       `api/room`,
       {
         roomName: newRoomName,
-        users: JSON.stringify(selectedUser._id),
+        users: JSON.stringify(selectedUser.id),
       },
       user.token
     )
